@@ -13,6 +13,11 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { AuthProvider } from '../providers/auth/auth';
 import { UserProvider } from '../providers/user/user';
+import { ImghandlerProvider } from '../providers/imghandler/imghandler';
+
+import { File } from '@ionic-native/file';
+import { FileChooser } from '@ionic-native/file-chooser';
+import { FilePath } from '@ionic-native/file-path';
 
 @NgModule({
   declarations: [
@@ -35,7 +40,11 @@ import { UserProvider } from '../providers/user/user';
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     AuthProvider,
     AngularFireAuth,
-    UserProvider
+    UserProvider,
+    ImghandlerProvider,
+    File,
+    FileChooser,
+    FilePath
   ]
 })
 export class AppModule { }
