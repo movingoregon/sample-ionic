@@ -18,6 +18,8 @@ import { ImghandlerProvider } from '../providers/imghandler/imghandler';
 import { File } from '@ionic-native/file';
 import { FileChooser } from '@ionic-native/file-chooser';
 import { FilePath } from '@ionic-native/file-path';
+import { RequestsProvider } from '../providers/requests/requests';
+import { ChatProvider } from '../providers/chat/chat';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,9 @@ import { FilePath } from '@ionic-native/file-path';
     ImghandlerProvider,
     File,
     FileChooser,
-    FilePath
+    FilePath,
+    RequestsProvider,
+    ChatProvider
   ]
 })
 export class AppModule { }

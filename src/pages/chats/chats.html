@@ -1,3 +1,9 @@
+<!--
+  Generated template for the ChatsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
 <ion-header>
 
   <ion-navbar color="hcolor">
@@ -6,12 +12,38 @@
       <button ion-button icon-only (click)="addbuddy()">
         <ion-icon name="person-add"></ion-icon>
       </button>
-    </ion-buttons> 
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+  <ion-list no-lines>
+    <ion-list-header>
+      Requests
+    </ion-list-header>
+    <ion-item *ngFor="let item of myrequests">
+      <ion-avatar item-left>
+        <img src="{{item.photoURL}}">
+      </ion-avatar>
+      <h4>{{item.displayName}}</h4>
 
+      <button item-right ion-button color="btn-gray" (click)="accept(item)">
+        <ion-icon name="checkmark"></ion-icon>
+      </button>
+      <button item-right ion-button color="btn-gray" (click)="ignore(item)">
+        <ion-icon name="trash"></ion-icon>
+      </button>
+    </ion-item>
+    <ion-list-header>
+      Friends
+    </ion-list-header>
+    <ion-item *ngFor="let item of myfriends" (click)="buddychat(item)">
+      <ion-avatar item-left>
+        <img src={{item.photoURL}}>
+      </ion-avatar>
+      <h3>{{item.displayName}}</h3>
+    </ion-item>
+  </ion-list>
 </ion-content>
