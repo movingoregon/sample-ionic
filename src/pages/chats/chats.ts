@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Events, AlertController } from 'ionic-angular';
 import { RequestsProvider } from '../../providers/requests/requests';
+import { ChatProvider } from '../../providers/chat/chat';
 
 /**
  * Generated class for the ChatsPage page.
@@ -17,7 +18,7 @@ export class ChatsPage {
   myrequests;
   myfriends;
   constructor(public navCtrl: NavController, public navParams: NavParams, public requestservice: RequestsProvider,
-              public events: Events, public alertCtrl: AlertController) {
+    public events: Events, public alertCtrl: AlertController, public chatservice: ChatProvider) {
   }
 
 
@@ -31,7 +32,7 @@ export class ChatsPage {
     })
     this.events.subscribe('friends', () => {
       this.myfriends = [];
-      this.myfriends = this.requestservice.myfriends; 
+      this.myfriends = this.requestservice.myfriends;
     })
   }
 
@@ -47,7 +48,7 @@ export class ChatsPage {
 
   accept(item) {
     this.requestservice.acceptrequest(item).then(() => {
-      
+
       let newalert = this.alertCtrl.create({
         title: 'Friend added',
         subTitle: 'Tap on the friend to chat with him',
@@ -65,4 +66,8 @@ export class ChatsPage {
     })
   }
 
+  buddychat(buddy) {
+    this.chatservice.initializebuddy(buddy);
+    this.navCtrl.push('BuddychatPage');
+  }
 }
